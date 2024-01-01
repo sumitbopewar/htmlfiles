@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+    <link rel="stylesheet" href="https://unpkg.com/treeflex/dist/css/treeflex.css">
+    <style data-boc-styles="">
+        .boc-button {
+            background-color: #039be5;
+            cursor: pointer;
+            width: calc(100%);
+            height: 50px;
+            color: #fff;
+            padding-top: 5px;
+            padding-left: 7px;
+            padding-right: 7px;
+            text-align: center;
+            text-transform: uppercase;
+            border: 1px solid #3fc0ff;
+            display: inline-block;
+            border-radius: 5px
+        }
+
+        .boc-button.orange {
+            background-color: #f57c00;
+            border: 1px solid #ffa03e
+        }
+
+        .boc-button.yellow {
+            background-color: #ffca28;
+            border: 1px solid #ffdf7c
+        }
+
+        .boc-button.lower {
+            text-transform: unset
+        }
+
+        .boc-button.transparent {
+            background-color: transparent
+        }
+
+        .boc-button:hover {
+            background-color: #35afea
+        }
+
+        .boc-button.orange:hover {
+            background-color: #f79632
+        }
+
+        .boc-button.yellow:hover {
+            background-color: #ffd452
+        }
+
+        .boc-button:active {
+            transform: matrix(.98, 0, 0, .98, 0, 0)
+        }
+
+        .boc-button-icon {
+            text-align: initial;
+            cursor: pointer;
+            margin-bottom: 15px;
+            color: #039be5
+        }
+
+        .boc-dark .boc-button-icon:hover {
+            background-color: #2d2d2d
+        }
+
+        .boc-light .boc-button-icon:hover {
+            background-color: #ececec
+        }
+
+        .boc-button-icon>img {
+            height: 24px;
+            width: 24px;
+            vertical-align: middle;
+            padding: 7px
+        }
+
+        .boc-button:focus {
+            outline: 0
+        }
+
+        .boc-button-icon>img {
+            filter: invert(46%) sepia(66%) saturate(2530%) hue-rotate(171deg) brightness(95%) contrast(98%)
+        }
+
+        .boc-light .boc-button.transparent {
+            color: #039be5
+        }
+
+        .boc-light .boc-button.transparent:hover {
+            color: #fff
+        }
+
+        .boc-button-loading {
+            background-color: transparent;
+            cursor: pointer;
+            width: calc(100% - 2px);
+            height: 50px;
+            color: #fff;
+            text-align: center;
+            text-transform: uppercase;
+            border: 1px solid #027cb7;
+            display: inline-block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none
+        }
+
+        .boc-button-loading .boc-loading-dots div {
+            margin: 0 10px
+        }
+
+        .boc-link-boc-button {
+            position: absolute;
+            right: 10px;
+            top: -1px
+        }
+
+        @media screen and (max-width:1000px) {
+            .boc-link-boc-button {
+                right: 50px
+            }
+        }
+
+        [data-boc-input-disabled] .boc-link-boc-button {
+            display: none
+        }
+
+        [dir=rtl] .boc-link-boc-button {
+            left: 10px;
+            right: unset
+        }
+
+        .boc-img-button {
+            width: 48px;
+            height: 48px;
+            cursor: pointer;
+            border-radius: 50%;
+            background-color: #039be5;
+            background-repeat: no-repeat;
+            background-size: 24px 24px;
+            background-position: center center;
+            margin: 3px;
+            display: inline-block
+        }
+
+        .boc-img-button:hover {
+            background-color: #f57c00
+        }
+
+        .boc-checkbox {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            white-space: nowrap
+        }
+
+        .boc-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0
+        }
+
+        .boc-checkbox-checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            border-radius: 5px
+        }
+
+        .boc-dark [data-boc-input-disabled] .boc-checkbox-checkmark,
+        .boc-dark [data-boc-input-disabled].boc-checkbox input:checked~.boc-checkbox-checkmark,
+        .boc-light [data-boc-input-disabled] .boc-checkbox-checkmark,
+        .boc-light [data-boc-input-disabled].boc-checkbox input:checked~.boc-checkbox-checkmark {
+            background-color: #aeaeae !important
+        }
+
+        [data-boc-input-disabled].boc-checkbox {
+            cursor: default
+        }
+
+        [dir=rtl] .boc-checkbox-checkmark {
+            right: 0
+        }
+
+        [dir=rtl] .boc-checkbox {
+            padding-left: unset;
+            padding-right: 35px
+        }
+
+        .boc-dark .boc-checkbox-checkmark {
+            background-color: #333;
+            border: 1px solid #5b5b5b
+        }
+
+        .boc-light .boc-checkbox-checkmark {
+            background-color: #fff;
+            border: 1px solid #c7c7c7
+        }
+
+        .boc-dark .boc-checkbox:hover input~.boc-checkbox-checkmark {
+            background-color: #3c3c3c
+        }
+
+        .boc-light .boc-checkbox:hover input~.boc-checkbox-checkmark {
+            background-color: #f8f9f9
+        }
+
+        .boc-dark .boc-checkbox input:checked~.boc-checkbox-checkmark {
+            background-color: #039be5
+        }
+
+        .boc-light .boc-checkbox input:checked~.boc-checkbox-checkmark {
+            background-color: #039be5
+        }
+
+        .boc-checkbox-checkmark:after {
+            content: "";
+            position: absolute;
+            display: none
+        }
+
+        .boc-checkbox input:checked~.boc-checkbox-checkmark:after {
+            display: block
+        }
+
+        .boc-checkbox .boc-checkbox-checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid #fff;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg)
+        }
+
+        .boc-filter {
+            user-select: none
+        }
+
+        .boc-light .boc-filter {
+            color: #757575
+        }
+
+        .boc-dark .boc-filter {
+            color: #ccc
+        }
+
+        .boc-filter>div>div {
+            display: inline-block;
+            padding: 3px 10px;
+            cursor: pointer
+        }
+
+        .boc-filter-menu fieldset,
+        .boc-filter>div,
+        .filter-field-selected {
+            border-radius: 5px
+        }
+
+        .boc-filter-menu fieldset {
+            overflow-y: auto;
+            max-height: 300px
+        }
+
+        .boc-filter>div.boc-filter-menu {
+            padding: 10px
+        }
+
+        .boc-light .boc-filter>div.boc-filter-menu,
+        .boc-light .filter-field-selected {
+            background-color: #f8f9f9
+        }
+
+        .boc-dark .boc-filter>div.boc-filter-menu,
+        .boc-dark .filter-field-selected {
+            background-color: #3c3c3c
+        }
+
+        .boc-light .boc-filter>div {
+            background-color: #eee
+        }
+
+        .boc-dark .boc-filter>div {
+            background-color: #333
+        }
+
+        .boc-form-perspective {
+            transform-style: preserve-3d;
+            perspective: 500px;
+            position: absolute;
+            top: 32px
+        }
+
+        .boc-form {
+            box-shadow: rgba(0, 0, 0, .2) 0 6px 6px 0, rgba(0, 0, 0, .19) 0 13px 20px 0;
+            padding: 14px;
+            transform-origin: top center;
+            user-select: none;
+            display: none;
+            position: relative;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px
+        }
+
+        .boc-form-bottom {
+            border-bottom-left-radius: unset;
+            border-bottom-right-radius: unset;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px
+        }
+
+        .boc-form .separator {
+            margin: 0 10px
+        }
+
+        @media screen and (max-width:1000px) {
+            .boc-form-perspective {
+                min-width: 100%;
+                max-height: calc(100% - 32px);
+                left: unset !important;
+                right: unset !important;
+                transform: none !important
+            }
+
+            .boc-form .set {
+                max-height: calc(100vh - 74px)
+            }
+
+            .boc-form-fieldset {
+                max-width: unset !important
+            }
+        }
+
+        .boc-light .boc-form .separator {
+            border-bottom: 1px solid #c7c7c7
+        }
+
+        .boc-dark .boc-form .separator {
+            border-bottom: 1px solid #5b5b5b
+        }
+
+        .boc-light .boc-form {
+            background-color: #fff
+        }
+
+        .boc-dark .boc-form {
+            background-color: #252526
+        }
+
+        .boc-item {
+            padding: 6px 12px 6px 12px;
+            display: flex;
+            flex-direction: row
+        }
+
+        .boc-light .boc-form .boc-item.selected,
+        .boc-light .boc-form .boc-item:hover {
+            background-color: #0074e8;
+            color: #fff
+        }
+
+        .boc-dark .boc-form .boc-item.selected,
+        .boc-dark .boc-form .boc-item:hover {
+            background-color: #094771;
+            color: #fff
+        }
+
+        .boc-item.selected img,
+        .boc-item:hover img {
+            filter: invert(100%)
+        }
+
+        .boc-item.selected img {
+            visibility: visible !important
+        }
+
+        .boc-form-fieldset {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 !important
+        }
+
+        .boc-form-field {
+            flex: 1 0 21%;
+            margin: 3px;
+            min-width: 200px
+        }
+
+        .boc-form-field-100 {
+            flex: 1 0 96%;
+            margin: 3px;
+            min-width: 200px
+        }
+
+        .boc-input {
+            position: relative
+        }
+
+        .boc-input>input,
+        .boc-input>select {
+            height: 50px;
+            padding: 18px 10px 2px 9px;
+            width: 100%;
+            box-sizing: border-box;
+            border-style: solid;
+            border-width: 1px
+        }
+
+        .boc-input select {
+            height: 50px;
+            padding: 20px 5px 4px 5px
+        }
+
+        [data-boc-input-disabled].boc-input>input,
+        [data-boc-input-disabled].boc-input>select {
+            border-color: transparent !important
+        }
+
+        .boc-light [data-boc-input-disabled]>input,
+        .boc-light [data-boc-input-disabled]>select {
+            background-color: #fff !important
+        }
+
+        .boc-dark [data-boc-input-disabled]>input,
+        .boc-dark [data-boc-input-disabled]>select {
+            background-color: #252526 !important
+        }
+
+        [data-boc-input-disabled]>select {
+            appearance: none;
+            padding-left: 8px
+        }
+
+        .boc-input>label {
+            display: inline-block;
+            position: absolute;
+            padding-left: 10px;
+            padding-right: 10px;
+            color: #acacac;
+            cursor: text;
+            -webkit-transition: all .1s ease-out;
+            -moz-transition: all .1s ease-out;
+            -ms-transition: all .1s ease-out;
+            -o-transition: all .1s ease-out;
+            transition: all .1 ease-out;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: initial;
+            text-align: initial;
+            white-space: nowrap
+        }
+
+        .boc-input>label {
+            top: 12px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: calc(100% - 14px)
+        }
+
+        .boc-input>label.focused,
+        .boc-input>label.hasval {
+            top: -1px
+        }
+
+        .boc-input>input,
+        .boc-input>select {
+            outline: 0;
+            border-radius: 5px
+        }
+
+        .boc-dark .boc-input>label.focused,
+        .boc-light .boc-input>label.focused {
+            color: #039be5
+        }
+
+        .boc-dark .boc-input>input,
+        .boc-dark .boc-input>select {
+            color: #ccc;
+            background-color: #333;
+            border-color: #5b5b5b
+        }
+
+        .boc-light .boc-input>input,
+        .boc-light .boc-input>select {
+            color: #757575;
+            background-color: #fff;
+            border-color: #c7c7c7
+        }
+
+        .boc-light .boc-input>input:focus,
+        .boc-light .boc-input>select:focus {
+            border-color: #039be5;
+            background-color: #f8f9f9
+        }
+
+        .boc-dark .boc-input>input:focus,
+        .boc-dark .boc-input>select:focus {
+            border-color: #039be5;
+            background-color: #3c3c3c
+        }
+
+        .boc-dark .boc-input>input.boc-validation-error,
+        .boc-dark .boc-input>select.boc-validation-error,
+        .boc-light .boc-input>input.boc-validation-error,
+        .boc-light .boc-input>select.boc-validation-error {
+            border-color: #ca2a2a
+        }
+
+        .boc-dark .boc-validation-error-message,
+        .boc-light .boc-validation-error-message {
+            color: #ca2a2a
+        }
+
+        .boc-link {
+            color: #039be5;
+            cursor: pointer;
+            text-decoration: underline
+        }
+
+        .boc-link:hover {
+            color: #f57c00
+        }
+
+        .boc-dark ::-webkit-scrollbar,
+        .boc-light ::-webkit-scrollbar {
+            width: 15px;
+            height: 15px
+        }
+
+        .boc-dark ::-webkit-scrollbar-corner {
+            background: #1e1e1e
+        }
+
+        .boc-dark ::-webkit-scrollbar-track {
+            background: #1e1e1e;
+            border-left: 1px solid #333;
+            border-top: 1px solid #333
+        }
+
+        .boc-dark ::-webkit-scrollbar-thumb {
+            background: #424242
+        }
+
+        .boc-dark ::-webkit-scrollbar-thumb:hover {
+            background: #4f4f4f
+        }
+
+        .boc-dark ::-webkit-scrollbar-thumb:active {
+            background: #5e5e5e
+        }
+
+        .boc-light ::-webkit-scrollbar-corner {
+            background: #fff
+        }
+
+        .boc-light ::-webkit-scrollbar-track {
+            background: #fff;
+            border-left: 1px solid #ddd;
+            border-top: 1px solid #ddd
+        }
+
+        .boc-light ::-webkit-scrollbar-thumb {
+            background: #c1c1c1
+        }
+
+        .boc-light ::-webkit-scrollbar-thumb:hover {
+            background: #929292
+        }
+
+        .boc-light ::-webkit-scrollbar-thumb:active {
+            background: #666
+        }
+
+        .boc-edit-form {
+            display: none !;
+        }
+
+        @media screen and (max-width:1000px) {
+            .boc-edit-form {
+                width: 100%
+            }
+        }
+
+        .boc-dark .boc-edit-form {
+            background-color: #252526
+        }
+
+        .boc-light .boc-edit-form {
+            background-color: #fff
+        }
+
+        .boc-edit-form-header {
+            height: 200px;
+            text-align: center;
+            border-radius: 10px
+        }
+
+        .export-service .boc-edit-form-header {
+            border-radius: unset
+        }
+
+        .boc-edit-form-title {
+            color: #fff;
+            margin: 0;
+            padding: 14px 17px 7px 17px
+        }
+
+        .boc-edit-form-avatar {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            top: 75px;
+            border: 5px solid #fff;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #cacaca;
+            box-shadow: rgba(0, 0, 0, .2) 0 6px 6px 0, rgba(0, 0, 0, .19) 0 13px 20px 0
+        }
+
+        .boc-edit-form-close {
+            position: absolute;
+            right: 14px;
+            top: 14px;
+            width: 34px;
+            height: 34px;
+            cursor: pointer
+        }
+
+        .boc-edit-form-fields {
+            flex-grow: 1;
+            overflow-y: auto;
+            overflow-x: hidden
+        }
+
+        .boc-edit-form-fields-inner {
+            margin: 0 7px 20px 7px
+        }
+
+        .boc-chart-menu {
+            opacity: 0;
+            display: inline-block;
+            position: absolute;
+            text-align: left;
+            user-select: none;
+            min-width: 270px;
+            box-shadow: rgba(0, 0, 0, .2) 0 4px 8px 0, rgba(0, 0, 0, .19) 0 6px 20px 0;
+            font: 13px/28px Helvetica, "Segoe UI", Arial, sans-serif;
+            border-radius: 10px
+        }
+
+        .boc-chart-menu>div:hover img {
+            filter: invert(100%)
+        }
+
+        .boc-chart-menu [data-item] {
+            text-align: start;
+            padding: 7px 10px
+        }
+
+        .boc-dark .boc-chart-menu [data-item] {
+            background-color: #252526;
+            color: #acacac;
+            border-bottom: 1px solid #333
+        }
+
+        .boc-dark .boc-chart-menu [data-item]:hover {
+            background-color: #094771 !important;
+            color: #fff !important
+        }
+
+        .boc-dark .boc-chart-menu [data-item]:hover svg {
+            filter: brightness(0) invert(1)
+        }
+
+        .boc-light .boc-chart-menu [data-item] {
+            background-color: #fff;
+            color: #333;
+            border-bottom: 1px solid #c7c7c7
+        }
+
+        .boc-light .boc-chart-menu [data-item]:hover {
+            background-color: #0074e8 !important;
+            color: #fff !important
+        }
+
+        .boc-light .boc-chart-menu [data-item]:hover svg {
+            filter: brightness(0) invert(1)
+        }
+
+        .boc-chart-menu [data-item] svg {
+            vertical-align: middle
+        }
+
+        .boc-chart-menu [data-item]:first-child {
+            border-top-left-radius: 7px;
+            border-top-right-radius: 7px
+        }
+
+        .boc-chart-menu [data-item]:last-child {
+            border-bottom-width: 0;
+            border-bottom-style: none;
+            border-bottom-left-radius: 7px;
+            border-bottom-right-radius: 7px
+        }
+
+        .boc-search {
+            position: absolute
+        }
+
+        @media screen and (max-width:500px) {
+            .boc-search {
+                width: calc(100% - 30px);
+                left: 15px
+            }
+        }
+
+        .boc-search .boc-input {
+            margin-bottom: 0
+        }
+
+        .boc-search-input {
+            color: #7a7a7a;
+            width: 100%;
+            border: none;
+            outline: 0;
+            padding-top: 10px;
+            padding-right: 47px
+        }
+
+        .boc-search-image-td {
+            width: 43px
+        }
+
+        .boc-search-text-td {
+            padding-inline-end: 7px;
+            line-height: 15px;
+            text-align: start
+        }
+
+        .boc-search table {
+            box-shadow: rgba(0, 0, 0, .2) 0 4px 8px 0, rgba(0, 0, 0, .19) 0 6px 20px 0;
+            margin: 0 3.5px 0 3.5px;
+            width: calc(100% - 7px);
+            border-radius: 7px
+        }
+
+        .boc-search table tr:first-child td:first-child {
+            border-top-left-radius: 7px
+        }
+
+        .boc-search table tr:first-child td:last-child {
+            border-top-right-radius: 7px
+        }
+
+        [dir=rtl] .boc-search table tr:first-child td:first-child {
+            border-top-left-radius: unset;
+            border-top-right-radius: 7px
+        }
+
+        [dir=rtl] .boc-search table tr:first-child td:last-child {
+            border-top-right-radius: unset;
+            border-top-left-radius: 7px
+        }
+
+        .boc-search table tr:last-child td:first-child {
+            border-bottom-left-radius: 7px
+        }
+
+        .boc-search table tr:last-child td:last-child {
+            border-bottom-right-radius: 7px
+        }
+
+        [dir=rtl] .boc-search table tr:last-child td:first-child {
+            border-bottom-left-radius: unset;
+            border-bottom-right-radius: 7px
+        }
+
+        [dir=rtl] .boc-search table tr:last-child td:last-child {
+            border-bottom-right-radius: unset;
+            border-bottom-left-radius: 7px
+        }
+
+        .boc-dark .boc-search table {
+            background-color: #252526;
+            color: #acacac
+        }
+
+        .boc-search [data-search-item-id] {
+            cursor: pointer
+        }
+
+        .boc-search-photo {
+            margin: 7px 7px 0 7px;
+            width: 32px;
+            height: 32px;
+            background-size: cover;
+            background-position: top center;
+            border-radius: 50%;
+            display: inline-block;
+            border: 1px solid #8c8c8c
+        }
+
+        .boc-search [data-search-item-id]:hover .boc-link {
+            color: #ffca28
+        }
+
+        .boc-search [data-search-item-id]:hover .boc-link:hover {
+            color: #f57c00
+        }
+
+        .boc-dark .boc-search [data-search-item-id] td {
+            border-top: 1px solid #333
+        }
+
+        .boc-dark .boc-search [data-search-item-id]:hover,
+        .boc-dark .boc-search [data-selected=yes] {
+            background-color: #094771;
+            color: #fff
+        }
+
+        .boc-light .boc-search table {
+            background-color: #fff;
+            color: #333
+        }
+
+        .boc-light .boc-search [data-search-item-id] td {
+            border-top: 1px solid #c7c7c7
+        }
+
+        .boc-light .boc-search [data-search-item-id]:hover,
+        .boc-light .boc-search [data-selected=yes] {
+            background-color: #0074e8;
+            color: #fff
+        }
+
+        .boc-search [data-search-item-id]:first-child td {
+            border-top: unset
+        }
+
+        .boc-ripple-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0
+        }
+
+        .boc-drag-over rect {
+            opacity: .5
+        }
+
+        .boc-ripple-container span {
+            transform: scale(0);
+            border-radius: 100%;
+            position: absolute;
+            opacity: .75;
+            background-color: #fff;
+            animation: boc-ripple 1s
+        }
+
+        @-moz-keyframes boc-ripple {
+            to {
+                opacity: 0;
+                transform: scale(2)
+            }
+        }
+
+        @-webkit-keyframes boc-ripple {
+            to {
+                opacity: 0;
+                transform: scale(2)
+            }
+        }
+
+        @-o-keyframes boc-ripple {
+            to {
+                opacity: 0;
+                transform: scale(2)
+            }
+        }
+
+        @keyframes boc-ripple {
+            to {
+                opacity: 0;
+                transform: scale(2)
+            }
+        }
+
+        .boc-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s
+        }
+
+        .boc-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: #fff;
+            -webkit-transition: .4s;
+            transition: .4s
+        }
+
+        .boc-slider.round {
+            border-radius: 24px
+        }
+
+        .boc-slider.round:before {
+            border-radius: 50%
+        }
+
+        svg text:hover {
+            cursor: default
+        }
+
+        svg.boc-cursor-grab,
+        svg.boc-cursor-grab text:hover {
+            cursor: grab
+        }
+
+        svg.boc-cursor-nodrop,
+        svg.boc-cursor-nodrop text:hover {
+            cursor: no-drop
+        }
+
+        svg.boc-cursor-copy,
+        svg.boc-cursor-copy text:hover {
+            cursor: copy
+        }
+
+        svg.boc-cursor-move,
+        svg.boc-cursor-move text:hover {
+            cursor: move
+        }
+
+        #boc-close-btn:focus,
+        #boc-close-btn:hover {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer
+        }
+
+        #boc-id-select:focus {
+            outline: .5px solid #aeaeae
+        }
+
+        #boc-sampleDialog #title:hover {
+            cursor: default;
+            background: gray
+        }
+
+        .boc-light {
+            background-color: #fff;
+            font: 13px/28px Helvetica, "Segoe UI", Arial, sans-serif
+        }
+
+        .boc-dark {
+            background-color: #1e1e1e;
+            font: 13px/28px Helvetica, "Segoe UI", Arial, sans-serif
+        }
+
+        .boc-light .boc-fill {
+            fill: #fff
+        }
+
+        .boc-dark .boc-fill {
+            fill: #1e1e1e
+        }
+
+        .boc-dark input,
+        .boc-dark select,
+        .boc-light input,
+        .boc-light select {
+            font: 16px Helvetica, "Segoe UI", Arial, sans-serif
+        }
+
+        .boc-dark h1,
+        .boc-light h1 {
+            font-size: 30px;
+            line-height: 1
+        }
+
+        .boc-edit-form {
+            display: none !important;
+        }
+
+        .export-service .boc-edit-form {
+            border-radius: unset
+        }
+
+        .boc-dark .boc-edit-form {
+            color: #acacac
+        }
+
+        .boc-light .boc-edit-form {
+            color: #333
+        }
+
+        .boc-dark ::-webkit-calendar-picker-indicator {
+            filter: invert(70%)
+        }
+
+        .boc-light ::-webkit-calendar-picker-indicator {
+            filter: invert(50%)
+        }
+
+        .boc-edit-form-instruments {
+            margin: 42px 10px 0 10px;
+            text-align: center;
+            min-height: 70px
+        }
+
+        .boc-img-button svg {
+            position: relative;
+            top: 12px
+        }
+
+        .boc-light .boc-toolbar-container svg circle,
+        .boc-light .boc-toolbar-container svg line,
+        .boc-light .boc-toolbar-container svg path {
+            stroke: #8c8c8c !important
+        }
+
+        .boc-dark .boc-toolbar-container svg circle,
+        .boc-dark .boc-toolbar-container svg line,
+        .boc-dark .boc-toolbar-container svg path {
+            stroke: #8c8c8c !important
+        }
+
+        .boc-dark .boc-toolbar-container svg rect {
+            fill: #252526 !important
+        }
+
+        .boc-dark .boc-toolbar-container [data-tlbr=minus] svg {
+            border-left: 1px solid #5b5b5b !important;
+            border-right: 1px solid #5b5b5b !important;
+            border-bottom: 1px solid #5b5b5b !important
+        }
+
+        .boc-dark .boc-toolbar-container [data-tlbr=plus] svg {
+            border-left: 1px solid #5b5b5b !important;
+            border-right: 1px solid #5b5b5b !important;
+            border-top: 1px solid #5b5b5b !important
+        }
+
+        .boc-dark .boc-toolbar-container [data-tlbr]>svg {
+            border: 1px solid #5b5b5b !important;
+            background-color: #252526 !important
+        }
+
+        .boc-toolbar-layout {
+            height: 123px;
+            padding-top: 20px;
+            position: absolute;
+            width: 100%;
+            left: "0";
+            bottom: "-145px"
+        }
+
+        .boc-light .boc-toolbar-layout {
+            border-top: 1px solid #c7c7c7;
+            background-color: #f9f9f9
+        }
+
+        .boc-dark .boc-toolbar-layout {
+            border-top: 1px solid #5b5b5b;
+            background-color: #2b2b2b
+        }
+
+        .boc-dotted-connector path {
+            stroke-dasharray: 7
+        }
+
+        .boc-undo-redo {
+            position: absolute;
+            top: 23px;
+            left: 23px
+        }
+
+        @media screen and (max-width:500px) {
+            .boc-undo-redo {
+                position: absolute;
+                top: 83px;
+                left: 23px
+            }
+        }
+
+        .boc-light .boc-undo-redo path {
+            fill: #cacaca
+        }
+
+        .boc-dark .boc-undo-redo path {
+            fill: #5b5b5b
+        }
+
+        .boc-light .boc-undo-redo .boc-ur-clickable path {
+            fill: #9c9c9c
+        }
+
+        .boc-dark .boc-undo-redo .boc-ur-clickable path {
+            fill: #8c8c8c
+        }
+
+        .boc-undo-redo .boc-ur-clickable rect {
+            cursor: pointer
+        }
+
+        .boc-undo-redo>span {
+            position: relative;
+            display: inline-block;
+            user-select: none
+        }
+
+        .boc-undo-redo .boc-undo-i {
+            left: -6px;
+            top: -6px
+        }
+
+        .boc-undo-redo .boc-redo-i {
+            right: -6px;
+            bottom: 6px
+        }
+
+        .boc-undo-redo>span>span {
+            color: #fff;
+            position: absolute;
+            display: inline-block;
+            min-width: 20px;
+            min-height: 20px;
+            border-radius: 50%;
+            line-height: 20px;
+            text-align: center;
+            padding: 1px;
+            user-select: none;
+            cursor: pointer
+        }
+
+        .boc-light .boc-undo-redo>span>span {
+            background-color: #9c9c9c
+        }
+
+        .boc-dark .boc-undo-redo>span>span {
+            background-color: #8c8c8c
+        }
+        /* CSS */
+        .main_container {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .boc-light {
+            background-color: rgb(16, 16, 35) !important;
+        }
+
+        #tree {
+            width: 100%;
+            height: 100%;
+        }
+
+        .boc-input,
+        .boc-edit-form-header {
+            display: none;
+        }
+
+        .boc-edit-form.light.ula.undefined {
+            display: none !important;
+        }
+        #olivia_gradient {
+            --color-stop-1: #ffffff;
+            --color-stop-2: #eeeeee;
+            --opacity-stop: 1;
+        }
+
+        .olivia-f0 {
+            font-size: 18px;
+            fill: #757575;
+        }
+
+        .olivia-f1 {
+            font-size: 14px;
+            fill: #757575;
+        }
+
+        .boc-dark .olivia-f0,
+        .boc-dark .olivia-f1 {
+            fill: #aeaeae;
+        }
+
+        .boc-dark #olivia_gradient {
+            --color-stop-1: #646464;
+            --color-stop-2: #363636;
+            --opacity-stop: 1;
+        }
+    </style>
+</head>
+
+<body>
+   
+    <div class="main_container">
+        <div id="tree">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:block;"
+                width="1883" height="700" viewBox="-381.5,-30,1883,700">
+                <defs>
+                <linearGradient id="olivia_gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="var(--color-stop-1)" stop-opacity="var(--opacity-stop)"></stop>
+                        <stop offset="100%" stop-color="var(--color-stop-2)" stop-opacity="var(--opacity-stop)"></stop>
+                    </linearGradient>
+                    <filter id="_62u1" x="0" y="0" width="200%" height="200%">
+                        <feOffset result="offOut" in="SourceAlpha" dx="5" dy="5"></feOffset>
+                        <feGaussianBlur result="blurOut" in="offOut" stdDeviation="5"></feGaussianBlur>
+                        <feBlend in="SourceGraphic" in2="blurOut" mode="normal"></feBlend>
+                    </filter>
+                    <linearGradient id="_aies" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#646464;stop-opacity:1"></stop>
+                        <stop offset="100%" style="stop-color:#363636;stop-opacity:1"></stop>
+                    </linearGradient>
+                    <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox"
+                        id="isla-shadow">
+                        <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                        <feGaussianBlur stdDeviation="10" in="shadowOffsetOuter1" result="shadowBlurOuter1">
+                        </feGaussianBlur>
+                        <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" in="shadowBlurOuter1"
+                            type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+                        <feMerge>
+                            <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                            <feMergeNode in="SourceGraphic"></feMergeNode>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <g data-pointer="pointer" transform="matrix(0,0,0,0,100,100)">
+                    <radialGradient id="pointerGradient">
+                        <stop stop-color="#ffffff" offset="0"></stop>
+                        <stop stop-color="#C1C1C1" offset="1"></stop>
+                    </radialGradient>
+                    <circle cx="16" cy="16" r="16" stroke-width="1" stroke="#acacac" fill="url(#pointerGradient)">
+                    </circle>
+                </g>
+                <g data-n-id="1" style="opacity: 1" transform="matrix(1,0,0,1,435,0)" class="node" data-sl="0"
+                    data-l="0">
+                    <rect fill="url(#olivia_gradient)" x="0" y="0" height="120" width="250" stroke-width="1"
+                        stroke="#aeaeae" rx="7" ry="7"></rect>
+                    <clipPath id="_epmo">
+                        <circle cx="50" cy="60" r="40"></circle>
+                    </clipPath>
+                    <image preserveAspectRatio="xMidYMid slice" clip-path="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        xlink:href="https://cdn.balkan.app/shared/1.jpg" x="10" y="20" width="80" height="80"></image>
+                    <text data-width="135" class="olivia-f0" x="100" y="55">Sumit</text>
+                    <text data-width="135" class="olivia-f1" x="100" y="76">Chairman and SEO</text>
+                </g>
+                <g data-n-id="2" style="opacity: 1" transform="matrix(1,0,0,1,0,180)" class="node" data-sl="1"
+                    data-l="1">
+                    <rect fill="url(#olivia_gradient)" x="0" y="0" height="120" width="250" stroke-width="1"
+                        stroke="#aeaeae" rx="7" ry="7"></rect>
+                    <clipPath id="_80ke">
+                        <circle cx="50" cy="60" r="40"></circle>
+                    </clipPath>
+                    <image preserveAspectRatio="xMidYMid slice" clip-path="url(#_80ke)"
+                        xlink:href="https://cdn.balkan.app/shared/2.jpg" x="10" y="20" width="80" height="80"></image>
+                    <text data-width="135" class="olivia-f0" x="100" y="55">Lexie Cole</text><text data-width="135"
+                        class="olivia-f1" x="100" y="76">QA Lead</text>
+                </g>
+                <g data-n-id="5" style="opacity: 1" transform="matrix(1,0,0,1,0,360)" class="node tree-layout"
+                    data-sl="2" data-l="2">
+                    <rect fill="url(#olivia_gradient)" x="0" y="0" height="120" width="250" stroke-width="1"
+                        stroke="#aeaeae" rx="7" ry="7"></rect>
+                    <clipPath id="_6nbn">
+                        <circle cx="50" cy="60" r="40"></circle>
+                    </clipPath>
+                    <image preserveAspectRatio="xMidYMid slice" clip-path="url(#_6nbn)"
+                        xlink:href="https://cdn.balkan.app/shared/5.jpg" x="10" y="20" width="80" height="80"></image>
+                    <text data-width="135" class="olivia-f0" x="100" y="55">Elliot Ross</text><text data-width="135"
+                        class="olivia-f1" x="100" y="76">QA</text>
+                </g>
+                <g data-n-id="6" style="opacity: 1" transform="matrix(1,0,0,1,0,495)" class="node tree-layout"
+                    data-sl="3" data-l="2">
+                    <rect fill="url(#olivia_gradient)" x="0" y="0" height="120" width="250" stroke-width="1"
+                        stroke="#aeaeae" rx="7" ry="7"></rect>
+                    <clipPath id="_99ay">
+                        <circle cx="50" cy="60" r="40"></circle>
+                    </clipPath>
+                    <image preserveAspectRatio="xMidYMid slice" clip-path="url(#_99ay)"
+                        xlink:href="https://cdn.balkan.app/shared/6.jpg" x="10" y="20" width="80" height="80"></image>
+                    <text data-width="135" class="olivia-f0" x="100" y="55">Anahi Gordon</text><text data-width="135"
+                        class="olivia-f1" x="100" y="76">QA</text>
+                </g>
+                <g data-n-id="7" style="opacity: 1" transform="matrix(1,0,0,1,0,630)" class="node tree-layout"
+                    data-sl="4" data-l="2">
+                    <rect fill="url(#olivia_gradient)" x="0" y="0" height="120" width="250" stroke-width="1"
+                        stroke="#aeaeae" rx="7" ry="7"></rect>
+                    <clipPath id="_dxmd">
+                        <circle cx="50" cy="60" r="40"></circle>
+                    </clipPath>
+                    <image preserveAspectRatio="xMidYMid slice" clip-path="url(#_dxmd)"
+                        xlink:href="https://cdn.balkan.app/shared/7.jpg" x="10" y="20" width="80" height="80"></image>
+                    <text data-width="135" class="olivia-f0" x="100" y="55">Knox Macias</text><text data-width="135"
+                        class="olivia-f1" x="100" y="76">QA</text>
+                </g>
+                <g data-n-id="3" style="opacity: 1" transform="matrix(1,0,0,1,435,180)" class="node" data-sl="1"
+                    data-l="1">
+                    <rect fill="url(#olivia_gradient)" x="0" y="0" height="120" width="250" stroke-width="1"
+                        stroke="#aeaeae" rx="7" ry="7"></rect>
+                    <clipPath id="_7119">
+                        <circle cx="50" cy="60" r="40"></circle>
+                    </clipPath>
+                    <image preserveAspectRatio="xMidYMid slice" clip-path="url(#_7119)"
+                        xlink:href="https://cdn.balkan.app/shared/anim/1.gif" x="10" y="20" width="80" height="80">
+                    </image><text data-width="135" class="olivia-f0" x="100" y="55">Janae Barrett</text><text
+                        data-width="135" class="olivia-f1" x="100" y="76">Technical Director</text>
+                </g>
+                <g data-n-id="8" style="opacity: 1" transform="matrix(1,0,0,1,290,360)" class="node" data-sl="2"
+                    data-l="2">
+                    <rect fill="url(#olivia_gradient)" x="0" y="0" height="120" width="250" stroke-width="1"
+                        stroke="#aeaeae" rx="7" ry="7"></rect>
+                    <clipPath id="_rl2h">
+                        <circle cx="50" cy="60" r="40"></circle>
+                    </clipPath>
+                    <image preserveAspectRatio="xMidYMid slice" clip-path="url(#_rl2h)"
+                        xlink:href="https://cdn.balkan.app/shared/8.jpg" x="10" y="20" width="80" height="80"></image>
+                    <text data-width="135" class="olivia-f0" x="100" y="55">Nash Ingram</text><text data-width="135"
+                        class="olivia-f1" x="100" y="76">.NET Team Lead</text>
+                </g>
+                <g data-n-id="10" style="opacity: 1" transform="matrix(1,0,0,1,290,540)" class="node tree-layout"
+                    data-sl="3" data-l="3">
+                    <rect fill="url(#olivia_gradient)" x="0" y="0" height="120" width="250" stroke-width="1"
+                        stroke="#aeaeae" rx="7" ry="7"></rect>
+                    <clipPath id="_7ppq">
+                        <circle cx="50" cy="60" r="40"></circle>
+                    </clipPath>
+                    <image preserveAspectRatio="xMidYMid slice" clip-path="url(#_7ppq)"
+                        xlink:href="https://cdn.balkan.app/shared/10.jpg" x="10" y="20" width="80" height="80"></image>
+                    <text data-width="135" class="olivia-f0" x="100" y="55">Alice Gray</text><text data-width="135"
+                        class="olivia-f1" x="100" y="76">Programmer</text>
+                </g>
+                <g data-n-id="11" style="opacity: 1" transform="matrix(1,0,0,1,290,675)" class="node tree-layout"
+                    data-sl="4" data-l="3">
+                    <rect fill="url(#olivia_gradient)" x="0" y="0" height="120" width="250" stroke-width="1"
+                        stroke="#aeaeae" rx="7" ry="7"></rect>
+                    <clipPath id="_1fol">
+                        <circle cx="50" cy="60" r="40"></circle>
+                    </clipPath>
+                    <image preserveAspectRatio="xMidYMid slice" clip-path="url(#_1fol)"
+                        xlink:href="https://cdn.balkan.app/shared/11.jpg" x="10" y="20" width="80" height="80"></image>
+                    <text data-width="135" class="olivia-f0" x="100" y="55">Anne Ewing</text><text data-width="135"
+                        class="olivia-f1" x="100" y="76">Programmer</text>
+                </g>
+                <g data-n-id="9" style="opacity: 1" transform="matrix(1,0,0,1,580,360)" class="node" data-sl="2"
+                    data-l="2">
+                    <rect fill="url(#olivia_gradient)" x="0" y="0" height="120" width="250" stroke-width="1"
+                        stroke="#aeaeae" rx="7" ry="7"></rect>
+                    <clipPath id="_bmso">
+                        <circle cx="50" cy="60" r="40"></circle>
+                    </clipPath>
+                    <image preserveAspectRatio="xMidYMid slice" clip-path="url(#_bmso)"
+                        xlink:href="https://cdn.balkan.app/shared/9.jpg" x="10" y="20" width="80" height="80"></image>
+                    <text data-width="135" class="olivia-f0" x="100" y="55">Sage Barnett</text><text data-width="135"
+                        class="olivia-f1" x="100" y="76">JS Team Lead</text>
+                </g>
+                <g data-n-id="12" style="opacity: 1" transform="matrix(1,0,0,1,580,540)" class="node tree-layout"
+                    data-sl="3" data-l="3">
+                    <rect fill="url(#olivia_gradient)" x="0" y="0" height="120" width="250" stroke-width="1"
+                        stroke="#aeaeae" rx="7" ry="7"></rect>
+                    <clipPath id="_qp0t">
+                        <circle cx="50" cy="60" r="40"></circle>
+                    </clipPath>
+                    <image preserveAspectRatio="xMidYMid slice" clip-path="url(#_qp0t)"
+                        xlink:href="https://cdn.balkan.app/shared/12.jpg" x="10" y="20" width="80" height="80"></image>
+                    <text data-width="135" class="olivia-f0" x="100" y="55">Reuben Mcleod</text><text data-width="135"
+                        class="olivia-f1" x="100" y="76">Programmer</text>
+                </g>
+                <g data-n-id="13" style="opacity: 1" transform="matrix(1,0,0,1,580,675)" class="node tree-layout"
+                    data-sl="4" data-l="3">
+                    <rect fill="url(#olivia_gradient)" x="0" y="0" height="120" width="250" stroke-width="1"
+                        stroke="#aeaeae" rx="7" ry="7"></rect>
+                    <clipPath id="_kepm">
+                        <circle cx="50" cy="60" r="40"></circle>
+                    </clipPath>
+                    <image preserveAspectRatio="xMidYMid slice" clip-path="url(#_kepm)"
+                        xlink:href="https://cdn.balkan.app/shared/13.jpg" x="10" y="20" width="80" height="80"></image>
+                    <text data-width="135" class="olivia-f0" x="100" y="55">Ariel Wiley</text><text data-width="135"
+                        class="olivia-f1" x="100" y="76">Programmer</text>
+                </g>
+                <g data-n-id="4" style="opacity: 1" transform="matrix(1,0,0,1,870,180)" class="node" data-sl="1"
+                    data-l="1">
+                    <rect fill="url(#olivia_gradient)" x="0" y="0" height="120" width="250" stroke-width="1"
+                        stroke="#aeaeae" rx="7" ry="7"></rect>
+                    <clipPath id="_2wzt">
+                        <circle cx="50" cy="60" r="40"></circle>
+                    </clipPath>
+                    <image preserveAspectRatio="xMidYMid slice" clip-path="url(#_2wzt)"
+                        xlink:href="https://cdn.balkan.app/shared/4.jpg" x="10" y="20" width="80" height="80"></image>
+                    <text data-width="135" class="olivia-f0" x="100" y="55">Aaliyah Webb</text><text data-width="135"
+                        class="olivia-f1" x="100" y="76">Manager</text>
+                </g>
+                <g data-n-id="14" style="opacity: 1" transform="matrix(1,0,0,1,870,360)" class="node tree-layout"
+                    data-sl="2" data-l="2">
+                    <rect fill="url(#olivia_gradient)" x="0" y="0" height="120" width="250" stroke-width="1"
+                        stroke="#aeaeae" rx="7" ry="7"></rect>
+                    <clipPath id="_0xid">
+                        <circle cx="50" cy="60" r="40"></circle>
+                    </clipPath>
+                    <image preserveAspectRatio="xMidYMid slice" clip-path="url(#_0xid)"
+                        xlink:href="https://cdn.balkan.app/shared/14.jpg" x="10" y="20" width="80" height="80"></image>
+                    <text data-width="135" class="olivia-f0" x="100" y="55">Lucas West</text><text data-width="135"
+                        class="olivia-f1" x="100" y="76">Marketer</text>
+                </g>
+                <g data-n-id="15" style="opacity: 1" transform="matrix(1,0,0,1,870,495)" class="node tree-layout"
+                    data-sl="3" data-l="2">
+                    <rect fill="url(#olivia_gradient)" x="0" y="0" height="120" width="250" stroke-width="1"
+                        stroke="#aeaeae" rx="7" ry="7"></rect>
+                    <clipPath id="_ag24">
+                        <circle cx="50" cy="60" r="40"></circle>
+                    </clipPath>
+                    <image preserveAspectRatio="xMidYMid slice" clip-path="url(#_ag24)"
+                        xlink:href="https://cdn.balkan.app/shared/15.jpg" x="10" y="20" width="80" height="80"></image>
+                    <text data-width="135" class="olivia-f0" x="100" y="55">Adan Travis</text><text data-width="135"
+                        class="olivia-f1" x="100" y="76">Designer</text>
+                </g>
+                <g data-n-id="16" style="opacity: 1" transform="matrix(1,0,0,1,870,630)" class="node tree-layout"
+                    data-sl="4" data-l="2">
+                    <rect fill="url(#olivia_gradient)" x="0" y="0" height="120" width="250" stroke-width="1"
+                        stroke="#aeaeae" rx="7" ry="7"></rect>
+                    <clipPath id="_jaof">
+                        <circle cx="50" cy="60" r="40"></circle>
+                    </clipPath>
+                    <image preserveAspectRatio="xMidYMid slice" clip-path="url(#_jaof)"
+                        xlink:href="https://cdn.balkan.app/shared/16.jpg" x="10" y="20" width="80" height="80"></image>
+                    <text data-width="135" class="olivia-f0" x="100" y="55">Alex Snider</text><text data-width="135"
+                        class="olivia-f1" x="100" y="76">Sales Manager</text>
+                </g>
+                <g data-l-id="[1][2]" class="link ">
+                    <path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none"
+                        d="M560,120 560,145 Q560,150 555,150 L130,150 Q125,150 125,155 L125,180"></path>
+                </g>
+                <g data-l-id="[1][3]" class="link ">
+                    <path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="M560,120 L560,180">
+                    </path>
+                </g>
+                <g data-l-id="[1][4]" class="link ">
+                    <path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none"
+                        d="M560,120 560,145 Q560,150 565,150 L990,150 Q995,150 995,155 L995,180"></path>
+                </g>
+                <g data-ctrl-ec-id="1" transform="matrix(1,0,0,1,545,105)" style="cursor:pointer;">
+                    <circle cx="15" cy="15" r="15" class="boc-fill" stroke="#aeaeae" stroke-width="1"></circle>
+                    <line x1="4" y1="15" x2="26" y2="15" stroke-width="1" stroke="#aeaeae"></line>
+                </g>
+                <g data-l-id="[2][5]" class="link ">
+                    <path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="M125,300 L125,360">
+                    </path>
+                </g>
+                <g data-ctrl-ec-id="2" transform="matrix(1,0,0,1,110,285)" style="cursor:pointer;">
+                    <circle cx="15" cy="15" r="15" class="boc-fill" stroke="#aeaeae" stroke-width="1"></circle>
+                    <line x1="4" y1="15" x2="26" y2="15" stroke-width="1" stroke="#aeaeae"></line>
+                </g>
+                <g data-l-id="[5][6]" class="link ">
+                    <path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="M125,480 L125,495">
+                    </path>
+                </g>
+                <g data-l-id="[6][7]" class="link ">
+                    <path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="M125,615 L125,630">
+                    </path>
+                </g>
+                <g data-l-id="[3][8]" class="link ">
+                    <path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none"
+                        d="M560,300 560,325 Q560,330 555,330 L420,330 Q415,330 415,335 L415,360"></path>
+                </g>
+                <g data-l-id="[3][9]" class="link ">
+                    <path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none"
+                        d="M560,300 560,325 Q560,330 565,330 L700,330 Q705,330 705,335 L705,360"></path>
+                </g>
+                <g data-ctrl-ec-id="3" transform="matrix(1,0,0,1,545,285)" style="cursor:pointer;">
+                    <circle cx="15" cy="15" r="15" class="boc-fill" stroke="#aeaeae" stroke-width="1"></circle>
+                    <line x1="4" y1="15" x2="26" y2="15" stroke-width="1" stroke="#aeaeae"></line>
+                </g>
+                <g data-l-id="[8][10]" class="link ">
+                    <path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="M415,480 L415,540">
+                    </path>
+                </g>
+                <g data-ctrl-ec-id="8" transform="matrix(1,0,0,1,400,465)" style="cursor:pointer;">
+                    <circle cx="15" cy="15" r="15" class="boc-fill" stroke="#aeaeae" stroke-width="1"></circle>
+                    <line x1="4" y1="15" x2="26" y2="15" stroke-width="1" stroke="#aeaeae"></line>
+                </g>
+                <g data-l-id="[10][11]" class="link ">
+                    <path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="M415,660 L415,675">
+                    </path>
+                </g>
+                <g data-l-id="[9][12]" class="link ">
+                    <path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="M705,480 L705,540">
+                    </path>
+                </g>
+                <g data-ctrl-ec-id="9" transform="matrix(1,0,0,1,690,465)" style="cursor:pointer;">
+                    <circle cx="15" cy="15" r="15" class="boc-fill" stroke="#aeaeae" stroke-width="1"></circle>
+                    <line x1="4" y1="15" x2="26" y2="15" stroke-width="1" stroke="#aeaeae"></line>
+                </g>
+                <g data-l-id="[12][13]" class="link ">
+                    <path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="M705,660 L705,675">
+                    </path>
+                </g>
+                <g data-l-id="[4][14]" class="link ">
+                    <path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="M995,300 L995,360">
+                    </path>
+                </g>
+                <g data-ctrl-ec-id="4" transform="matrix(1,0,0,1,980,285)" style="cursor:pointer;">
+                    <circle cx="15" cy="15" r="15" class="boc-fill" stroke="#aeaeae" stroke-width="1"></circle>
+                    <line x1="4" y1="15" x2="26" y2="15" stroke-width="1" stroke="#aeaeae"></line>
+                </g>
+                <g data-l-id="[14][15]" class="link ">
+                    <path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="M995,480 L995,495">
+                    </path>
+                </g>
+                <g data-l-id="[15][16]" class="link ">
+                    <path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="M995,615 L995,630">
+                    </path>
+                </g>
+            </svg>
+        </div>
+    </div>
+    <script src="https://balkan.app/js/OrgChart.js"></script>
+    <script>
+  // Sample data for node information
+ 
+
+  // Function to create a card for each node
+  function createCard(node) {
+    const cardContainer = document.getElementById("cardContainer");
+
+    const cardCol = document.createElement("div");
+    cardCol.classList.add("col-md-4", "mb-3");
+
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    const cardBody = document.createElement("div");
+    cardBody.classList.add("card-body");
+
+    const cardTitle = document.createElement("h5");
+    cardTitle.classList.add("card-title");
+    cardTitle.textContent = node.name;
+
+    const cardText = document.createElement("p");
+    cardText.classList.add("card-text");
+    cardText.textContent = node.title;
+
+    const cardImg = document.createElement("img");
+    cardImg.classList.add("img-fluid", "rounded-circle");
+    cardImg.setAttribute("src", node.imgUrl);
+    cardImg.setAttribute("alt", node.name);
+
+    cardBody.appendChild(cardTitle);
+    cardBody.appendChild(cardText);
+    cardBody.appendChild(cardImg);
+
+    card.appendChild(cardBody);
+    cardCol.appendChild(card);
+    cardContainer.appendChild(cardCol);
+  }
+
+  // Loop through node data and create cards for each node
+  nodesData.forEach(node => {
+    createCard(node);
+  });
+
+  // Fetch user data from backend
+fetch('http://localhost:3000/users') // Replace with your server URL
+.then(response => response.json())
+.then(data => {
+  // Use the retrieved data (e.g., update UI with user information)
+  console.log(data); // Log the retrieved user data
+  // Perform actions with the received data (e.g., displaying it on the frontend)
+})
+.catch(error => {
+  console.error('Error fetching user data:', error);
+});
+
+</script>
+<!-- 
+    <script src="https://balkan.app/js/OrgChart.js"></script>
+    <script>
+        var chart = new OrgChart(document.getElementById("tree"), {
+            template: 'olivia',
+            mouseScrool: OrgChart.none,
+            layout: OrgChart.mixed,
+            enableSearch: false,
+            nodeBinding: {
+                img_0: "img",
+                field_0: "name",
+                field_1: "title"
+            }
+        });
+
+        let data = document.querySelectorAll('.node');
+        let data_text = data[0].children[3].childNodes[0].data;
+        let data_img = data[0].children[2].attributes[1].nodeValue;
+        let data_title = data[0].children[4].childNodes[0].data;
+        // console.log(data_title)
+
+        let pId = [1,1,1,2,2,2,3,3,8,8,9,9,4,4,4];
+
+        data.forEach((nodes, index)=>{
+            console.log(++index)
+        })
+
+        chart.load([
+            { id: "1", name: data_text, title: data_title, email: "amber@domain.com", img: data_img},
+            { id: "2", pid: "1", name: "Lexie Cole", title: "QA Lead", email: "ava@domain.com", img: "https://cdn.balkan.app/shared/2.jpg" },
+            { id: "3", pid: "1", name: "Janae Barrett", title: "Technical Director", img: "https://cdn.balkan.app/shared/anim/1.gif" },
+            { id: "4", pid: "1", name: "Aaliyah Webb", title: "Manager", email: "jay@domain.com", img: "https://cdn.balkan.app/shared/4.jpg" },
+            { id: "5", pid: "2", name: "Elliot Ross", title: "QA", img: "https://cdn.balkan.app/shared/5.jpg" },
+            { id: "6", pid: "2", name: "Anahi Gordon", title: "QA", img: "https://cdn.balkan.app/shared/6.jpg" },
+            { id: "7", pid: "2", name: "Knox Macias", title: "QA", img: "https://cdn.balkan.app/shared/7.jpg" },
+            { id: "8", pid: "3", name: "Nash Ingram", title: ".NET Team Lead", email: "kohen@domain.com", img: "https://cdn.balkan.app/shared/8.jpg" },
+            { id: "9", pid: "3", name: "Sage Barnett", title: "JS Team Lead", img: "https://cdn.balkan.app/shared/9.jpg" },
+            { id: "10", pid: "8", name: "Alice Gray", title: "Programmer", img: "https://cdn.balkan.app/shared/10.jpg" },
+            { id: "11", pid: "8", name: "Anne Ewing", title: "Programmer", img: "https://cdn.balkan.app/shared/11.jpg" },
+            { id: "12", pid: "9", name: "Reuben Mcleod", title: "Programmer", img: "https://cdn.balkan.app/shared/12.jpg" },
+            { id: "13", pid: "9", name: "Ariel Wiley", title: "Programmer", img: "https://cdn.balkan.app/shared/13.jpg" },
+            { id: "14", pid: "4", name: "Lucas West", title: "Marketer", img: "https://cdn.balkan.app/shared/14.jpg" },
+            { id: "15", pid: "4", name: "Adan Travis", title: "Designer", img: "https://cdn.balkan.app/shared/15.jpg" },
+            { id: "16", pid: "4", name: "Alex Snider", title: "Sales Manager", img: "https://cdn.balkan.app/shared/16.jpg" }
+        ]);
+
+        document.getElementById("selectTemplate").addEventListener("change", function () {
+            chart.config.template = this.value;
+            chart.draw();
+        });
+
+    </script> -->
+</body>
+
+</html>
